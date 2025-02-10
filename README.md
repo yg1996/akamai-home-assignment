@@ -12,7 +12,7 @@ An advanced Site Reliability Engineer (SRE) CLI tool to interact with Kubernetes
 - [Usage](#usage)
 - [Autocomplete Setup](#autocomplete-setup)
 - [Troubleshooting](#troubleshooting)
-- [License](#license)
+- [Unit Testing](#unit-testing)
 
 ---
 
@@ -70,6 +70,16 @@ Run the CLI tool using:
 python3 sre.py [command] [options]
 ```
 
+### Interactive Mode
+This tool supports an **Interactive Mode** to simplify its use. If any required argument is missing, it will automatically prompt the user to enter the value interactively. Enable **Interactive Mode** by using the `--interactive` flag:
+
+#### Example:
+```bash
+python3 sre.py scale --interactive
+```
+
+When run with `--interactive`, missing values such as deployment names, replicas, and namespaces will be requested interactively.
+
 ### Commands Overview
 | Command    | Description |
 |------------|-------------|
@@ -79,6 +89,8 @@ python3 sre.py [command] [options]
 | `diagnostic` | Run diagnostics on deployments and their pods. |
 | `rollout`  | Restart or monitor deployment rollouts. |
 | `logs`     | Fetch logs for a deployment or pod. |
+
+
 
 ### Examples
 1. **List all deployments in a namespace:**
@@ -170,6 +182,29 @@ To enable autocomplete for this tool on a client’s terminal:
   activate-global-python-argcomplete --user
   eval "$(register-python-argcomplete python3 sre.py)"
   ```
+
+## 🧪 Unit Testing
+The **SRE Kubernetes CLI Tool** includes a suite of unit tests to validate its core functionalities. These tests are located in the test_sre.py file and are designed to simulate Kubernetes API behavior using dummy API objects.
+
+### Key Tests
+| Test Case    | Description |
+|------------|-------------|
+| `test_list_deployments`    | Verifies that the CLI correctly lists the deployments in the given namespace. |
+| `test_scale_deployment`    | Ensures that scaling a deployment updates the replica count as expected. |
+| `test_info_deployment`     | Checks that detailed deployment information is displayed correctly. |
+| `test_rollout_deployment_status` | Simulates a rollout and tests the status monitoring mechanism. |
+| `test_fetch_logs_deployment`  | Verifies that logs for a given deployment are retrieved and displayed. |
+| `test_fetch_logs_pod`     | Ensures that logs for a specific pod are fetched correctly. |
+
+
+### Running the Tests
+To run the unit tests, navigate to the project directory and execute:
+
+```bash 
+python3 -m unittest test_sre.py 
+```
+
+This will execute the entire test suite and display the results.
 
 ---
 
