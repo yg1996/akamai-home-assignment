@@ -201,7 +201,7 @@ The **SRE Kubernetes CLI Tool** includes a suite of unit tests to validate its c
 To run the unit tests, navigate to the project directory and execute:
 
 ```bash 
-python3 -m unittest test_sre.py 
+python3 test_sre.py 
 ```
 
 This will execute the entire test suite and display the results.
