@@ -48,8 +48,8 @@ argcomplete
 
 ### 3. Clone the Repository
 ```bash
-git clone https://github.com/yourusername/sre-cli-tool.git
-cd sre-cli-tool
+git clone https://github.com/yg1996/akamai-home-assignment.git
+cd akamai-home-assignment
 ```
 
 ### 4. Ensure Your Kubernetes Context is Set
